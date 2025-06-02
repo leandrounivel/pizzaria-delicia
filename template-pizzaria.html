@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizzaria Delivery - Sua Pizza Quentinha</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* RESET SIMPLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* CABEÇALHO */
+    header {
+      background: #c0392b;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+    }
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #fff;
+    }
+    .botao-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* HERO */
+    .heroi {
+      background: url('https://images.unsplash.com/photo-1513104890138-7c749659a591') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      background-attachment: fixed;
+    }
+    .heroi h1 {
+      font-size: 2.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    /* SEÇÃO BENEFÍCIOS */
+    .beneficios {
+      padding: 2rem;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    .caixas-beneficios {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .beneficio {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      width: 200px;
+      border-radius: 8px;
+    }
+    .beneficio i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #c0392b;
+    }
+    /* SEÇÃO SABORES */
+    .sabores {
+      padding: 2rem;
+      background: #fff3e0;
+      text-align: center;
+    }
+    .sabores ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .sabores li {
+      background: #ffe0b2;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+    /* DEPOIMENTOS */
+    .depoimentos {
+      background: #eee;
+      padding: 2rem;
+      text-align: center;
+    }
+    .container-depoimentos {
+      max-width: 600px;
+      margin: auto;
+      position: relative;
+    }
+    .depoimento {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .depoimento.ativo {
+      display: flex;
+    }
+    .depoimento img {
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      width: 80px;
+      height: 80px;
+    }
+    .botoes-carrossel {
+      margin-top: 1rem;
+    }
+    .botoes-carrossel button {
+      padding: 0.5rem;
+      border: none;
+      background: #c0392b;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 0 0.25rem;
+    }
+    /* FORMULÁRIO */
+    .formulario {
+      background: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    .formulario form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .formulario input, .formulario select {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .formulario button {
+      padding: 0.75rem;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    /* RODAPÉ */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .icones-sociais i {
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+    }
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .botao-menu {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #e74c3c;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+      }
+      nav ul.mostrar {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <nav>
+      <h1>Pizzaria Delícia</h1>
+      <div class="botao-menu" onclick="alternarMenu()"><i class="fas fa-bars"></i></div>
+      <ul id="menu">
+        <li><a href="#beneficios">Benefícios</a></li>
+        <li><a href="#sabores">Sabores</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Peça já</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="heroi">
+    <h1>A pizza quentinha que chega até você!</h1>
+  </section>
+
+  <!-- INÍCIO DOS BENEFÍCIOS -->
+  <section class="beneficios" id="beneficios">
+    <h2>Por que escolher nossa pizzaria?</h2>
+    <div class="caixas-beneficios">
+      <div class="beneficio">
+        <i class="fas fa-pizza-slice"></i>
+        <p>Ingredientes frescos</p>
+      </div>
+      <div class="beneficio">
+        <i class="fas fa-motorcycle"></i>
+        <p>Entrega rápida</p>
+      </div>
+      <div class="beneficio">
+        <i class="fas fa-heart"></i>
+        <p>Sabor inigualável</p>
+      </div>
+    </div>
+  </section>
+  <!-- FIM DOS BENEFÍCIOS -->
+
+  <!-- INÍCIO DOS SABORES -->
+  <section class="sabores" id="sabores">
+    <h2>Nossos Sabores</h2>
+    <ul>
+      <li>Calabresa</li>
+      <li>Margherita</li>
+      <li>Frango com Catupiry</li>
+      <li>Portuguesa</li>
+      <li>Vegetariana</li>
+    </ul>
+  </section>
+  <!-- FIM DOS SABORES -->
+
+  <!-- INÍCIO DOS DEPOIMENTOS -->
+  <section class="depoimentos" id="depoimentos">
+    <h2>O que nossos clientes dizem</h2>
+    <div class="container-depoimentos">
+      <div class="depoimento ativo">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria">
+        <p>"A melhor pizza da cidade, sempre quentinha!" – Maria</p>
+      </div>
+      <div class="depoimento">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João">
+        <p>"Entrega super rápida, recomendo demais!" – João</p>
+      </div>
+      <div class="depoimento">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana">
+        <p>"Sabor inigualável, virei fã!" – Ana</p>
+      </div>
+      <div class="botoes-carrossel">
+        <button onclick="anterior()">Anterior</button>
+        <button onclick="proximo()">Próximo</button>
+      </div>
+    </div>
+  </section>
+  <!-- FIM DOS DEPOIMENTOS -->
+
+  <!-- INÍCIO DO FORMULÁRIO -->
+  <section class="formulario" id="contato">
+    <h2>Peça já a sua pizza!</h2>
+    <form onsubmit="mostrarPopup(event)">
+      <input type="text" placeholder="Nome completo" required />
+      <input type="tel" placeholder="Telefone" required />
+      <input type="text" placeholder="Endereço de entrega" required />
+      <select required>
+        <option value="">Escolha o sabor</option>
+        <option>Calabresa</option>
+        <option>Margherita</option>
+        <option>Frango com Catupiry</option>
+        <option>Portuguesa</option>
+      </select>
+      <select required>
+        <option value="">Forma de pagamento</option>
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+        <option>PIX</option>
+      </select>
+      <button type="submit">Fazer Pedido via WhatsApp</button>
+    </form>
+  </section>
+  <!-- FIM DO FORMULÁRIO -->
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>Siga-nos nas redes sociais</p>
+    <div class="icones-sociais">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>&copy; 2025 Pizzaria Delícia</p>
+  </footer>
+
+  <!-- MODAL DE CONFIRMAÇÃO -->
+  <div id="popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#fff; border:1px solid #ccc; padding:1rem; z-index:1000; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+    <p>Pedido realizado com sucesso! Em breve entraremos em contato.</p>
+    <button onclick="document.getElementById('popup').style.display='none'">Fechar</button>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Alternar menu no mobile
+    function alternarMenu() {
+      document.getElementById('menu').classList.toggle('mostrar');
+    }
+
+    // Carrossel depoimentos
+    const depoimentos = document.querySelectorAll('.depoimento');
+    let indice = 0;
+    function mostrarDepoimento(i) {
+      depoimentos.forEach((d, idx) => d.classList.toggle('ativo', idx === i));
+    }
+    function proximo() {
+      indice = (indice + 1) % depoimentos.length;
+      mostrarDepoimento(indice);
+    }
+    function anterior() {
+      indice = (indice - 1 + depoimentos.length) % depoimentos.length;
+      mostrarDepoimento(indice);
+    }
+
+    // Modal de pedido fictício
+    function mostrarPopup(event) {
+      event.preventDefault();
+      document.getElementById('popup').style.display = 'block';
+    }
+  </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Projeto - Pizzaria (TADS)</p>
+</body>
+</body>
+</html>
