@@ -280,30 +280,37 @@
   </section>
   <!-- FIM DOS DEPOIMENTOS -->
 
-  <!-- INÍCIO DO FORMULÁRIO -->
-  <section class="formulario" id="contato">
-    <h2>Peça já a sua pizza!</h2>
-    <form onsubmit="mostrarPopup(event)">
-      <input type="text" placeholder="Nome completo" required />
-      <input type="tel" placeholder="Telefone" required />
-      <input type="text" placeholder="Endereço de entrega" required />
-      <select required>
-        <option value="">Escolha o sabor</option>
-        <option>Calabresa</option>
-        <option>Margherita</option>
-        <option>Frango com Catupiry</option>
-        <option>Portuguesa</option>
-      </select>
-      <select required>
-        <option value="">Forma de pagamento</option>
-        <option>Dinheiro</option>
-        <option>Cartão</option>
-        <option>PIX</option>
-      </select>
-      <button type="submit">Fazer Pedido via WhatsApp</button>
-    </form>
-  </section>
-  <!-- FIM DO FORMULÁRIO -->
+ <!-- INÍCIO DO FORMULÁRIO -->
+<section class="formulario" id="contato">
+  <h2>Peça já a sua pizza!</h2>
+  <form onsubmit="mostrarPopup(event)">
+    <input type="text" placeholder="Nome completo" required />
+    <input type="tel" placeholder="Telefone" required />
+    <input type="text" placeholder="Endereço de entrega" required />
+
+    <select required>
+      <option value="">Escolha o sabor</option>
+      <option>Calabresa</option>
+      <option>Margherita</option>
+      <option>Frango com Catupiry</option>
+      <option>Portuguesa</option>
+    </select>
+
+    <!-- Forma de pagamento (radio buttons) -->
+    <p>Forma de pagamento:</p>
+    <label><input type="radio" name="pagamento" value="Dinheiro" required /> Dinheiro</label><br>
+    <label><input type="radio" name="pagamento" value="Cartão" /> Cartão</label><br>
+    <label><input type="radio" name="pagamento" value="PIX" /> PIX</label><br>
+
+    <!-- Extras (checkbox) -->
+    <p>Adicionais:</p>
+    <label><input type="checkbox" name="borda" value="Sim" /> Borda recheada</label><br>
+    <label><input type="checkbox" name="bebida" value="Sim" /> Bebida</label><br>
+
+    <button type="submit">Fazer Pedido via WhatsApp</button>
+  </form>
+</section>
+<!-- FIM DO FORMULÁRIO -->
 
   <!-- RODAPÉ -->
   <footer>
